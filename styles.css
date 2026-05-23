@@ -1,0 +1,75 @@
+/* Reset basique pour enlever les marges par défaut du navigateur */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif; /* Utilisez une police propre */
+}
+
+/* --- SECTION HERO --- */
+.hero-section {
+    background-color: #1f2937; /* Bleu nuit / sombre */
+    color: #f9faf8;
+    padding: 20px 15% 50px 15%; /* Marges internes pour centrer le contenu */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Pousse le logo à gauche et les liens à droite */
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px; /* Espace entre les liens */
+    list-style-type: none;
+}
+
+.nav-links a {
+    color: #e5e7eb;
+    text-decoration: none;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
+.hero-text {
+    flex: 1; /* Prend 50% de l'espace */
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    font-weight: 900;
+    color: #f9faf8;
+    margin-bottom: 10px;
+}
+
+.hero-image-placeholder {
+    flex: 1;
+    background-color: #6b7280;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px; /* Bords arrondis optionnels */
+}
+
+/* --- BOUTONS --- */
+.btn-primary, .btn-secondary {
+    background-color: #3882f6; /* Bleu vif */
+    color: white;
+    padding: 8px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    border: 2px solid white; /* Pour le CTA */
+}
