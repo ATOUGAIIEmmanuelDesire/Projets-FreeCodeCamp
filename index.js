@@ -27,8 +27,6 @@ app.get('/', (req, res) => {
  * On accepte n'importe quel fichier (.any()) pour éviter que Multer ne rejette 
  * la requête si le robot n'utilise pas exactement le nom "upfile" en interne.
  */
-const upload = multer({ storage: multer.memoryStorage() });
-
 /**
  * ROUTE CONFORME AUX ATTENTES DE FREECODECAMP
  * On utilise explicitement upload.single('upfile') car le test 3 exige ce nom de champ.
