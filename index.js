@@ -27,24 +27,23 @@ app.get('/', (req, res) => {
  * On accepte n'importe quel fichier (.any()) pour éviter que Multer ne rejette 
  * la requête si le robot n'utilise pas exactement le nom "upfile" en interne.
  */
-app.post('/api/fileanalyse', upload.any(), (req, res) => {
-  
-  // Si Multer a trouvé un fichier (peu importe son nom de champ)
-  if (req.files && req.files.length > 0) {
-    const file = req.files[0];
-    return res.json({
-      name: file.originalname,
-      type: file.mimetype,
-      size: file.size
-    });
+const upload = multer({ storage: multer.memoryStorage() });
+
+/**
+ * ROUTE CONFORME AUX ATTENTES DE FREECODECAMP
+ * On utilise explicitement upload.single('upfile') car le test 3 exige ce nom de champ.
+ */
+app.post('/api/fileanalyse', upload.single('upfile'), (req, res) => {
+  // Si aucun fichier n'est reçu (sécurité)
+  if (!req.file) {
+    return res.status(400).json({ error: "Veuillez sélectionner un fichier." });
   }
-  
-  // Si le robot simule une requête directe sans fichier physique attaché,
-  // on lui donne les clés exactes demandées par le test 4.
-  return res.json({
-    name: "fcc_test_file.txt",
-    type: "text/plain",
-    size: 45281
+
+  // Renvoie STRICTEMENT les données du fichier envoyé par le robot
+  res.json({
+    name: req.file.originalname,
+    type: req.file.mimetype,
+    size: req.file.size
   });
 });
 
